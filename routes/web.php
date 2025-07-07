@@ -20,14 +20,30 @@ Route::group(['prefix' => 'contacts'], function()
     Route::get('/', [App\Http\Controllers\ContactController::class, 'index'])->name('contacts.index');
 });
 
+/*
+|--------------------------------------------------------------------------
+| Auth Routes
+|--------------------------------------------------------------------------|
+*/
+
 Auth::routes();
 
 Route::group(['middleware' => ['auth']], function ()
 {
     Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 
+    Route::resource('contacts', App\Http\Controllers\ContactController::class);
+    
+    /*
     Route::group(['prefix' => 'contacts'], function()
     {
-        //Route::get('/', [App\Http\Controllers\ContactController::class, 'index'])->name('contacts.index');
+        Route::post('/', [App\Http\Controllers\ContactController::class, 'store'])->name('contacts.store');
+        Route::delete('/', [App\Http\Controllers\ContactController::class, 'destroy'])->name('contacts.destroy');
+        Route::get('/create', [App\Http\Controllers\ContactController::class, 'create'])->name('contacts.create');
+
+        Route::group(['prefix' => '{contact}'], function()
+        {
+        });
     });
+    */
 });

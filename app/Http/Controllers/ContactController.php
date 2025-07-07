@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Contact;
+use App\DataTables\ContactDataTable;
+
 class ContactController extends Controller
 {
     /**
@@ -21,8 +24,18 @@ class ContactController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(ContactDataTable $contactDataTable)
     {
-        return view('home');
+        return $contactDataTable->render('contacts.index');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('contacts.create');
     }
 }

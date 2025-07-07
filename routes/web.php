@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () { return redirect()->route('contacts.index'); })->name('index');
+Route::get('/', function () { return redirect()->route('contacts.index')->setStatusCode(200); })->name('index');
 
 Route::group(['prefix' => 'contacts'], function()
 {

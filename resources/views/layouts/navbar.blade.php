@@ -15,11 +15,13 @@
                 </li>
             @endif
 
+            {{--
             @if (Route::has('register'))
                 <li class="nav-item d-none d-sm-inline-block right">
                     <a class="nav-link" href="{{ route('register') }}">{{ __('Cadastro') }}</a>
                 </li>
             @endif
+            --}}
         @else
             <li class="nav-item dropdown right">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

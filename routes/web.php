@@ -13,10 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function () { return redirect()->route('contacts.index'); })->name('index');
+
+Route::group(['prefix' => 'contacts'], function()
+{
+    Route::get('/', [App\Http\Controllers\ContactController::class, 'index'])->name('contacts.index');
 });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['middleware' => ['auth']], function ()
+{
+    Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
+
+    Route::group(['prefix' => 'contacts'], function()
+    {
+        //Route::get('/', [App\Http\Controllers\ContactController::class, 'index'])->name('contacts.index');
+    });
+});

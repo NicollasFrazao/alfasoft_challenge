@@ -162,9 +162,7 @@
                 <!-- Main content -->
                 <section class="content">
                     <div class="container-fluid">
-                        {{--
                         @include('flash::message')
-                        --}}
                         
                         <div class="row">
                             <div class="col-sm-12">
@@ -185,7 +183,7 @@
 
             <!-- Main Footer -->
             <footer class="main-footer">
-                <strong>Copyright &copy; 2014-2021 <a href="#" target="_blank">{{ config('app.name') }}</a>.</strong> All rights reserved.
+                <strong>Copyright &copy; 2025 <a href="#" target="_blank">{{ config('app.name') }}</a>.</strong> All rights reserved.
                 <div class="float-right d-none d-sm-inline-block"><b>Version</b> 1.0.0</div>
             </footer>
         </div>

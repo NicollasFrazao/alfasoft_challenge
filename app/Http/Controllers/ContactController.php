@@ -64,4 +64,15 @@ class ContactController extends Controller
             return redirect()->back();
         }
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  Contact  $contact
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Contact $contact)
+    {
+        return view('contacts.show', compact('contact'));
+    }
 }

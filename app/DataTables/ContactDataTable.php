@@ -83,8 +83,7 @@ class ContactDataTable extends DataTable
      */
     protected function getColumns()
     {
-        return 
-        [
+        $columns = [
             Column::make('id')
                 ->title('#'),
             Column::make('name')
@@ -99,13 +98,15 @@ class ContactDataTable extends DataTable
             Column::make('updated_at')
                 ->title('Alterado em'),
             */
-            Column::computed('action')
-                ->title('Ações')
-                ->exportable(false)
-                ->printable(false)
-                ->width(60)
-                ->addClass('text-center'),
         ];
+        if (\Auth::check()) $columns[] = Column::computed('action')
+                                                ->title('Ações')
+                                                ->exportable(false)
+                                                ->printable(false)
+                                                ->width(60)
+                                                ->addClass('text-center');
+
+        return $columns;
     }
 
     /**

@@ -135,6 +135,6 @@ class ContactController extends Controller
             \Flash::error('Ocorreu um erro ao excluir o contato! Erro: '.$error->getMessage());
         }
         
-        return redirect()->back();
+        return redirect()->route('contacts.index');
     }
 }

@@ -14,20 +14,62 @@
         <!-- /.card-header -->
 
         <div class="card-body">
-            <label for="name">Nome: </label>
-            <p id="name">{{ $contact->name }}</p>
+            <div class="row">
+                <div class="form-group col-sm-6">
+                    <label for="name">Nome: </label>
+                    <p id="name">{{ $contact->name }}</p>
+                </div>
+            </div>
 
-            <label for="email">E-mail: </label>
-            <p id="email">{{ $contact->email }}</p>
+            <div class="row">
+                <div class="form-group col-sm-6">
+                    <label for="email">E-mail: </label>
+                    <p id="email">{{ $contact->email }}</p>
+                </div>
+            </div>
 
-            <label for="phone">Telefone: </label>
-            <p id="phone">{{ $contact->phone }}</p>
+            <div class="row">
+                <div class="form-group col-sm-6">
+                    <label for="phone">Telefone: </label>
+                    <p id="phone">{{ $contact->phone }}</p>
+                </div>
+            </div>
 
-            <label for="created_at">Criado em: </label>
-            <p id="created_at">{{ $contact->created_at->format('d/m/Y H:i:s') }}</p>
+            <div class="row">
+                <div class="form-group col-sm-6">
+                    <label for="created_at">Criado em: </label>
+                    <p id="created_at">{{ $contact->created_at->format('d/m/Y H:i:s') }}</p>
+                </div>
+            </div>
 
-            <label for="updated_at">Alterado em: </label>
-            <p id="updated_at">{{ $contact->updated_at->format('d/m/Y H:i:s') }}</p>
+            <div class="row">
+                <div class="form-group col-sm-6">
+                    <label for="updated_at">Alterado em: </label>
+                    <p id="updated_at">{{ $contact->updated_at->format('d/m/Y H:i:s') }}</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <a href="{{ route('contacts.index') }}" class="btn btn-default">Voltar</a>
+                    
+                    <div class="btn-group">
+                        <a href="{{ route('contacts.edit', [$contact->id]) }}" class="btn btn-default btn-xs" data-toggle="tooltip" title="Editar">
+                            <i class="fas fa-edit"></i>
+                        </a>
+
+                        {!! Form::open(["route" => ["contacts.destroy", $contact->id], "method" => "delete"]) !!}
+                            {!! Form::button("<i class='fas fa-trash'></i>", [
+                                "type"        => "submit",
+                                "onclick"     => "return confirm('Tem certeza que deseja efetuar a exclusão?');",
+                                "class"       => "btn btn-danger btn-xs",
+                                "data-toggle" => "tooltip",
+                                "title"       => "Excluir",
+                            ]) !!}
+                        {!! Form::close() !!}
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- /.card-body -->
 

@@ -38,13 +38,13 @@ class ContactTest extends TestCase
 
         $response = $this->post('/contacts', [
             'name' => 'Nícollas Frazão',
-            'email' => 'nicollas@example.com',
+            'email' => 'nicollas@alfasoft.pt',
             'phone' => '123456789',
         ]);
 
         $response->assertStatus(302); // Redireciona após salvar
         $this->assertDatabaseHas('contacts', [
-            'email' => 'nicollas@example.com',
+            'email' => 'nicollas@alfasoft.pt',
             'phone' => '123456789',
         ]);
     }
@@ -54,19 +54,19 @@ class ContactTest extends TestCase
         $this->login();
 
         $contact1 = Contact::factory()->create([
-            'email' => 'primeiro@example.com',
+            'email' => 'primeiro@alfasoft.pt',
             'phone' => '111111111',
         ]);
 
         $contact2 = Contact::factory()->create([
-            'email' => 'segundo@example.com',
+            'email' => 'segundo@alfasoft.pt',
             'phone' => '222222222',
         ]);
 
         // Tentando editar o segundo com o e-mail e telefone do primeiro
         $response = $this->put("/contacts/{$contact2->id}", [
             'name' => 'Contato Editado',
-            'email' => 'primeiro@example.com', // Já existe
+            'email' => 'primeiro@alfasoft.pt', // Já existe
             'phone' => '111111111',            // Já existe
         ]);
 
@@ -78,14 +78,14 @@ class ContactTest extends TestCase
         $this->login();
 
         $contact = Contact::factory()->create([
-            'email' => 'nicollas@example.com',
+            'email' => 'nicollas@alfasoft.pt',
             'phone' => '123456789',
         ]);
 
         // Mesmo email/phone, mas é do próprio registro
         $response = $this->put("/contacts/{$contact->id}", [
             'name' => 'Nome Atualizado',
-            'email' => 'nicollas@example.com',
+            'email' => 'nicollas@alfasoft.pt',
             'phone' => '123456789',
         ]);
 

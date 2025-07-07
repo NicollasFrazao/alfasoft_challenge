@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Contact;
 use App\DataTables\ContactDataTable;
+use App\Http\Requests\ContactRequest;
 
 class ContactController extends Controller
 {
@@ -45,9 +46,9 @@ class ContactController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ContactRequest $request)
     {
-        $input = $request->all();
+        $input = $request->validated();
 
         try
         {
@@ -94,9 +95,9 @@ class ContactController extends Controller
      * @param  Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Contact $contact)
+    public function update(ContactRequest $request, Contact $contact)
     {
-        $input = $request->all();
+        $input = $request->validated();
 
         try
         {

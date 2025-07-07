@@ -1,66 +1,64 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+Gerenciamento de Contatos
+Aplicativo Web
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Desenvolver um aplicativo web CRUD em Laravel para gerenciar contatos
 
-## About Laravel
+Recursos do Aplicativo
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+O aplicativo web deve ter 5 recursos:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+1 - Uma página de índice com uma lista de contatos existentes.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+2 - Uma página com um formulário para adicionar novos contatos.
 
-## Learning Laravel
+3 - Uma página para exibir os detalhes do contato (deve ser uma página, não um pop-up).
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+4 - Permitir a edição de um registro existente
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+5 - Permitir a exclusão de um registro existente
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Considerações
 
-## Laravel Sponsors
+Um contato é uma entidade com 4 campos: ID, Nome, Contato e endereço de e-mail. O nome deve ser uma string de qualquer tamanho maior que 5, o contato deve ter 9 dígitos e o e-mail deve ser um e-mail válido.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Cada linha na página de índice deve ter um link para editar o contato e um botão para excluí-lo. A exclusão deve realizar uma exclusão reversível do registro, usando os recursos do Laravel.
 
-### Premium Partners
+A página de detalhes do contato deve mostrar todos os campos do contato, além do link de edição e do botão de exclusão. Uma página independente deve ser implementada para exibir os detalhes de um contato, e não um pop-up exibindo as informações.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+O contato e o endereço de e-mail devem ser únicos; dois contatos não podem ter o mesmo endereço.
 
-## Contributing
+Quaisquer informações ou dados necessários sobre a estrutura do banco de dados devem ser adicionados usando migrações e/ou seedings.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Sempre utilize os recursos nativos do Laravel sempre que possível, incluindo rotas, controladores, regras de validação de formulários, exclusões reversíveis e outros recursos.
 
-## Code of Conduct
+Requisitos Adicionais
+Os seguintes requisitos devem ser implementados durante a execução do teste:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+- Permitir a visualização da lista de contatos por qualquer pessoa, mas os outros recursos devem ser acessados apenas por um usuário autenticado. Este pode ser um usuário estático criado anteriormente.
+- Implementar testes para verificar erros de validação de formulário ao adicionar ou editar contatos.
 
-## Security Vulnerabilities
+Etapas de desenvolvimento
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+1 - Acessar o CloudCMD (gerenciador de arquivos e terminal)
 
-## License
+2 - Criar e inicializar um repositório e enviar a versão base do site Laravel para ele
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+3 - Fazer vários envios com alterações de código de acordo com as melhores práticas
+Observações
+O ambiente de desenvolvimento já vem com o Laravel 10 pré-instalado. Em caso de erro, é possível instalar uma nova versão do Laravel pela linha de comando ou pelo gerenciador de arquivos CloudCMD.
+
+Ao instalar uma nova versão do Laravel, não exclua os arquivos .env e .htaccess, ou o ambiente deixará de funcionar e o exercício não será considerado.
+
+O ambiente do exercício utiliza o PHP versão 8.1; você precisará criar um código compatível com essa versão.
+
+Os arquivos env e .htaccess são necessários para o funcionamento adequado do ambiente e já estão presentes nele. Não exclua ou altere esses arquivos, a menos que seja estritamente necessário.
+
+Você não precisa e não deve executar o npm serve. O ambiente do exercício está pronto para apresentar a aplicação, desde que esteja configurado corretamente. Se precisar instalar dependências do npm, execute "npn run dev" ou equivalente, e o mesmo para o composer, conforme detalhado abaixo.
+Composer
+O Composer é necessário para o Laravel e está disponível no contêiner usado para o exercício. Para usar o composer, execute os comandos abaixo (ou outros comandos necessários):
+
+composer install
+composer update
+composer dump-autoload
+GIT
+Para gerenciar o repositório, use um repositório externo (gitlab, bitbucket ou github), desde que o repositório seja público.

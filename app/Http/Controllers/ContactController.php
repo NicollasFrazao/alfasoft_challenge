@@ -88,6 +88,33 @@ class ContactController extends Controller
     }
 
     /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  Contact  $contact
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Contact $contact)
+    {
+        $input = $request->all();
+
+        try
+        {
+            \DB::beginTransaction();
+            $contact->update($input);
+            \DB::commit();
+
+            \Flash::success('Contato atualizada com sucesso!');
+            return redirect()->route('contacts.index');
+        }
+        catch (\Exception $error)
+        {
+            \Flash::error('Ocorreu um erro ao atualizar o contato! Erro: '.$error->getMessage());
+            return redirect()->back();
+        }
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  Contact  $contact

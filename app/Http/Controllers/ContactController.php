@@ -38,4 +38,30 @@ class ContactController extends Controller
     {
         return view('contacts.create');
     }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $input = $request->all();
+
+        try
+        {
+            \DB::beginTransaction();
+            Contact::create($input);
+            \DB::commit();
+
+            \Flash::success('Contato cadastrada com sucesso!');
+            return redirect()->route('contacts.index');
+        }
+        catch (\Exception $error)
+        {
+            \Flash::error('Ocorreu um erro ao cadastrar o contato! Erro: '.$error->getMessage());
+            return redirect()->back();
+        }
+    }
 }

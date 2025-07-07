@@ -75,4 +75,28 @@ class ContactController extends Controller
     {
         return view('contacts.show', compact('contact'));
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  Contact  $contact
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Contact $contact)
+    {
+        try
+        {
+            \DB::beginTransaction();
+            $contact->delete();
+            \DB::commit();
+
+            \Flash::success('Contato excluído com sucesso!');
+        }
+        catch (\Exception $error)
+        {
+            \Flash::error('Ocorreu um erro ao excluir o contato! Erro: '.$error->getMessage());
+        }
+        
+        return redirect()->back();
+    }
 }

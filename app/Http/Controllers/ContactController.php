@@ -77,6 +77,17 @@ class ContactController extends Controller
     }
 
     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  Contact  $contact
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Contact $contact)
+    {
+        return view('contacts.edit', compact('contact'));
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  Contact  $contact
